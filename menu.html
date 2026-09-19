@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BRÖDBREAD — เมนูซาวร์โดว์ประจำสัปดาห์ | Menu &amp; Prices</title>
+<meta name="description" content="เมนูซาวร์โดว์โฮมเมด BRÖDBREAD — Original, Cranberry Walnut, Bacon Cheddar, 5 Seeds, Triple Choc, Blueberry Lemon, Truffle Sharp Cheddar. 850g loaves, ราคาเริ่มต้น ฿219.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://brodbread.fromchuta.com/menu">
+<link rel="alternate" hreflang="en" href="https://brodbread.fromchuta.com/menu">
+<link rel="alternate" hreflang="th" href="https://brodbread.fromchuta.com/menu">
+<link rel="alternate" hreflang="x-default" href="https://brodbread.fromchuta.com/menu">
+<meta name="theme-color" content="#FCF4E4">
+<meta property="og:locale" content="th_TH">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:site_name" content="BRÖDBREAD">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://brodbread.fromchuta.com/menu">
+<meta property="og:title" content="BRÖDBREAD — this week's menu">
+<meta property="og:description" content="7 homemade sourdough loaves, baked at home in Bangkok. 850g · 11–12 slices · from ฿219.">
+<meta property="og:image" content="https://brodbread.fromchuta.com/assets/menu/1.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BRÖDBREAD — this week's menu">
+<meta name="twitter:description" content="7 homemade sourdough loaves, baked at home in Bangkok. 850g · 11–12 slices · from ฿219.">
+<meta name="twitter:image" content="https://brodbread.fromchuta.com/assets/menu/1.webp">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Menu",
+  "name": "BRÖDBREAD weekly menu",
+  "url": "https://brodbread.fromchuta.com/menu",
+  "hasMenuSection": {
+    "@type": "MenuSection",
+    "name": "Sourdough loaves",
+    "hasMenuItem": [
+      { "@type": "MenuItem", "name": "Original", "offers": { "@type": "Offer", "price": "219", "priceCurrency": "THB" } },
+      { "@type": "MenuItem", "name": "Cranberry Walnut", "offers": { "@type": "Offer", "price": "279", "priceCurrency": "THB" } },
+      { "@type": "MenuItem", "name": "Bacon Cheddar", "offers": { "@type": "Offer", "price": "279", "priceCurrency": "THB" } },
+      { "@type": "MenuItem", "name": "5 Seeds", "offers": { "@type": "Offer", "price": "249", "priceCurrency": "THB" } },
+      { "@type": "MenuItem", "name": "Triple Choc", "offers": { "@type": "Offer", "price": "299", "priceCurrency": "THB" } },
+      { "@type": "MenuItem", "name": "Blueberry Lemon", "offers": { "@type": "Offer", "price": "299", "priceCurrency": "THB" } },
+      { "@type": "MenuItem", "name": "Truffle Sharp Cheddar", "offers": { "@type": "Offer", "price": "329", "priceCurrency": "THB" } }
+    ]
+  }
+}
+</script>
+<link rel="preload" as="image" href="assets/menu/1.webp" type="image/webp">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schoolbell&family=Playpen+Sans+Thai:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FCF4E4;
+    --ink: #24201C;
+    --accent: #C7261B;
+    --accent-dark: #8F1A12;
+    --blue: #2F6AA6;
+    --sky: #6EA4D4;
+    --shadow-cream: #E7D6B4;
+    --word-shadow: #F0E2C6;
+    --soft-bg: #FFFBF1;
+    --body: #4A4238;
+    --thai-dim: #6B6259;
+    --thai-label: #7A7167;
+    --rose: #F6DCD3;
+    --rose-dim: #F0C9C2;
+    --menu-sub: #DCE9F5;
+    --handle: #D8C9AC;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Schoolbell", "Comic Sans MS", cursive;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  a { color: var(--accent); }
+  a:hover { color: var(--accent-dark); }
+
+  :focus-visible {
+    outline: 3px solid var(--blue);
+    outline-offset: 3px;
+    border-radius: 12px;
+  }
+
+  .thai {
+    font-family: "Playpen Sans Thai", "Schoolbell", sans-serif;
+  }
+
+  /* ================= marquee ================= */
+
+  .marquee {
+    height: 46px;
+    background: var(--accent);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    flex: none;
+  }
+  .marquee-track {
+    display: flex;
+    gap: 30px;
+    white-space: nowrap;
+    padding-left: 30px;
+    font-size: 17px;
+    letter-spacing: .16em;
+    color: var(--paper);
+    animation: slide 26s linear infinite;
+    flex: none;
+  }
+  .marquee-mobile { display: none; }
+  @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ================= header ================= */
+
+  .menu-wrap {
+    flex-grow: 1;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 44px clamp(24px, 6.4vw, 92px) 60px;
+  }
+
+  .topline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .home-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--accent);
+    transform: rotate(-2deg);
+    transition: transform .22s cubic-bezier(.6,0,.2,1);
+  }
+  .home-link:hover { transform: rotate(0deg) translateX(-3px); color: var(--accent-dark); }
+  .home-link .word {
+    font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+    line-height: 1;
+    text-shadow: 2.5px 2.5px 0 var(--word-shadow);
+    letter-spacing: .01em;
+  }
+  .home-link svg { width: 26px; height: 26px; flex: none; }
+
+  .order-top {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 22px;
+    background: var(--blue);
+    border: 3px solid var(--ink);
+    border-radius: 999px;
+    color: var(--paper);
+    font-family: inherit;
+    font-size: clamp(1.0625rem, 1.6vw, 1.3125rem);
+    line-height: 1.1;
+    text-decoration: none;
+    box-shadow: 4px 4px 0 var(--shadow-cream);
+    transition: transform .22s cubic-bezier(.6,0,.2,1), background .22s, box-shadow .22s cubic-bezier(.6,0,.2,1);
+  }
+  .order-top:hover {
+    background: var(--accent);
+    color: var(--paper);
+    transform: rotate(-1.2deg) translateY(-3px);
+    box-shadow: 7px 7px 0 var(--shadow-cream);
+  }
+  .order-top svg { width: 22px; height: 22px; flex: none; }
+
+  .menu-head { margin-top: 34px; text-align: center; }
+  .menu-head h1 {
+    margin: 0;
+    font-size: clamp(2.75rem, 6.4vw, 4.75rem);
+    font-weight: 400;
+    line-height: 1;
+    color: var(--accent);
+    transform: rotate(-1.5deg);
+    text-shadow: 4px 4px 0 var(--word-shadow);
+  }
+  .menu-head .thai-sub {
+    margin: 10px 0 0;
+    font-family: "Playpen Sans Thai", sans-serif;
+    font-size: clamp(1rem, 1.8vw, 1.375rem);
+    color: var(--thai-label);
+  }
+  .menu-note {
+    display: inline-block;
+    margin: 18px 0 0;
+    padding: 8px 20px;
+    background: var(--soft-bg);
+    border: 2.5px dashed var(--accent);
+    border-radius: 999px;
+    font-size: clamp(.9375rem, 1.5vw, 1.1875rem);
+    color: var(--body);
+    transform: rotate(1deg);
+  }
+
+  /* ================= menu items ================= */
+
+  .menu-list {
+    list-style: none;
+    margin: 40px 0 0;
+    padding: 0;
+  }
+
+  .menu-item {
+    display: grid;
+    grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
+    gap: 30px 48px;
+    align-items: center;
+    padding: 34px 0;
+  }
+  .menu-item:nth-child(even) { direction: rtl; }
+  .menu-item:nth-child(even) > * { direction: ltr; }
+
+  .item-sep {
+    border: none;
+    margin: 0;
+    height: 20px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 14'%3E%3Cpath d='M3 8 Q14 1 25 8 T47 8 T69 8 T91 8 T113 8 T137 8' fill='none' stroke='%236EA4D4' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E") center / 140px 14px repeat-x;
+  }
+
+  /* ---- photo card ---- */
+
+  .photo-btn {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 12px 12px 14px;
+    background: #fff;
+    border: 3px solid var(--ink);
+    border-radius: 14px;
+    cursor: zoom-in;
+    box-shadow: 6px 6px 0 var(--shadow-cream);
+    transform: rotate(-1.4deg);
+    transition: transform .25s cubic-bezier(.6,0,.2,1), box-shadow .25s cubic-bezier(.6,0,.2,1);
+  }
+  .menu-item:nth-child(even) .photo-btn { transform: rotate(1.4deg); }
+  .photo-btn:hover {
+    transform: rotate(0deg) translateY(-4px) scale(1.02);
+    box-shadow: 10px 10px 0 var(--shadow-cream);
+  }
+  .photo-btn:active { transform: scale(.98); box-shadow: 4px 4px 0 var(--shadow-cream); }
+  .photo-btn img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 7px;
+  }
+  .photo-hint {
+    position: absolute;
+    right: 20px;
+    bottom: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--paper);
+    border: 2.5px solid var(--ink);
+    border-radius: 999px;
+    opacity: 0;
+    transform: scale(.6) rotate(-20deg);
+    transition: opacity .2s, transform .25s cubic-bezier(.3,1.6,.5,1);
+  }
+  .photo-btn:hover .photo-hint, .photo-btn:focus-visible .photo-hint {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+  .photo-hint svg { width: 20px; height: 20px; }
+
+  /* ---- info ---- */
+
+  .item-info { position: relative; padding-right: 110px; }
+  .item-no {
+    display: block;
+    font-size: 15px;
+    letter-spacing: .22em;
+    color: var(--thai-label);
+  }
+  .item-title {
+    margin: 4px 0 0;
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    font-weight: 400;
+    line-height: 1.05;
+    color: var(--ink);
+    transform: rotate(-.6deg);
+  }
+  .item-tagline {
+    margin: 10px 0 0;
+    font-size: clamp(1.0625rem, 1.7vw, 1.375rem);
+    line-height: 1.45;
+    color: var(--body);
+  }
+  .item-tagline-th {
+    margin: 6px 0 0;
+    font-family: "Playpen Sans Thai", sans-serif;
+    font-size: clamp(.8125rem, 1.3vw, .9375rem);
+    line-height: 1.7;
+    color: var(--thai-dim);
+  }
+
+  .price-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 98px;
+    height: 98px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(10deg);
+    transition: transform .25s cubic-bezier(.3,1.6,.5,1);
+  }
+  .menu-item:hover .price-badge { transform: rotate(-4deg) scale(1.08); }
+  .price-badge svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .price-badge .price-num {
+    position: relative;
+    color: var(--paper);
+    font-size: 25px;
+    line-height: 1;
+    transform: rotate(-4deg);
+    white-space: nowrap;
+  }
+
+  /* ---- scroll reveal ---- */
+
+  .reveal { opacity: 0; transform: translateY(26px) rotate(.4deg); }
+  .reveal.shown {
+    opacity: 1;
+    transform: none;
+    transition: opacity .6s ease, transform .6s cubic-bezier(.2,.8,.3,1);
+  }
+
+  /* ================= footer ================= */
+
+  .finale {
+    flex: none;
+    background: var(--accent);
+    padding: 22px clamp(24px, 6.4vw, 92px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+  }
+  .finale-taglines { display: flex; flex-direction: column; gap: 3px; }
+  .finale-title { font-size: clamp(1.5625rem, 2.1vw, 1.875rem); line-height: 1.1; color: var(--paper); margin: 0; }
+  .finale-br { display: none; }
+  .finale-th { font-family: "Playpen Sans Thai", sans-serif; font-size: 14px; color: var(--rose); }
+  .copyright { font-size: 17px; color: var(--rose-dim); }
+
+  /* ================= lightbox ================= */
+
+  .lightbox { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; }
+  .lightbox[hidden] { display: none; }
+  .lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: none;
+    background: rgba(36, 32, 28, .78);
+    cursor: pointer;
+  }
+  .lightbox-figure {
+    position: relative;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    max-width: min(88vw, 720px);
+  }
+  .lightbox-img {
+    display: block;
+    width: 100%;
+    max-height: 76vh;
+    object-fit: contain;
+    background: #fff;
+    border: 3px solid var(--ink);
+    border-radius: 18px;
+    box-shadow: 10px 10px 0 rgba(231, 214, 180, .35);
+  }
+  .lightbox-cap {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    color: var(--paper);
+    font-size: 22px;
+    line-height: 1.2;
+    text-align: center;
+  }
+  .lightbox-cap .cap-price { color: var(--rose); }
+  .lightbox-count { font-size: 15px; letter-spacing: .18em; color: var(--rose-dim); }
+
+  .lightbox-btn {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 54px;
+    height: 54px;
+    background: var(--paper);
+    border: 3px solid var(--ink);
+    border-radius: 999px;
+    cursor: pointer;
+    padding: 0;
+    box-shadow: 3px 3px 0 rgba(231, 214, 180, .35);
+    transition: transform .18s cubic-bezier(.6,0,.2,1);
+  }
+  .lightbox-btn:hover { transform: translateY(-3px) rotate(-4deg); }
+  .lightbox-btn svg { width: 24px; height: 24px; }
+  .lightbox-prev { left: max(16px, calc(50vw - 430px)); top: 50%; translate: 0 -50%; }
+  .lightbox-next { right: max(16px, calc(50vw - 430px)); top: 50%; translate: 0 -50%; }
+  .lightbox-close { position: fixed; top: 20px; right: 20px; }
+  .lightbox-close:hover { transform: rotate(90deg); }
+
+  /* ================= reduced motion ================= */
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track { animation: none !important; }
+    .reveal { opacity: 1; transform: none; }
+    *, *::before, *::after { transition: none !important; }
+  }
+
+  /* ================= mobile ================= */
+
+  @media (max-width: 860px) {
+    .marquee { height: 34px; }
+    .marquee-desktop { display: none; }
+    .marquee-mobile { display: flex; gap: 22px; padding-left: 22px; font-size: 13px; letter-spacing: .14em; animation-duration: 22s; }
+
+    .menu-wrap { padding: 22px 22px 40px; }
+
+    .topline { flex-direction: column; gap: 14px; }
+    .home-link { transform: rotate(-1.5deg); }
+
+    .menu-head { margin-top: 26px; }
+    .menu-head h1 { transform: rotate(-2deg); text-shadow: 2.5px 2.5px 0 var(--word-shadow); }
+    .menu-note { transform: rotate(-.8deg); }
+
+    .menu-list { margin-top: 26px; }
+    .menu-item {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      padding: 26px 0;
+      direction: ltr;
+    }
+    .photo-btn { max-width: 420px; margin: 0 auto; }
+    .photo-hint { opacity: 1; transform: none; }
+
+    .item-info { text-align: center; padding-right: 0; padding-top: 58px; }
+    .item-title { transform: rotate(-1deg); }
+    .price-badge {
+      top: -46px;
+      right: 50%;
+      translate: 50% 0;
+      width: 84px;
+      height: 84px;
+    }
+    .price-badge .price-num { font-size: 21px; }
+
+    .finale {
+      margin: 20px 22px 26px;
+      padding: 20px 18px 18px;
+      border-radius: 18px;
+      text-align: center;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+    .finale-title { font-size: 25px; line-height: 1.15; }
+    .finale-th { margin-top: 7px; font-size: 12.5px; line-height: 1.6; }
+    .copyright { margin: 12px 0 0; font-size: 13px; }
+
+    .lightbox-figure { max-width: 92vw; }
+    .lightbox-img { max-height: 62vh; }
+    .lightbox-prev, .lightbox-next { top: auto; bottom: 6vh; translate: none; width: 48px; height: 48px; }
+    .lightbox-prev { left: 20vw; }
+    .lightbox-next { right: 20vw; }
+  }
+
+  @media (max-width: 340px) {
+    .menu-wrap { padding-inline: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- red marquee strip -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track marquee-desktop">
+    <span>BRÖDBREAD MENU ✦ 850G LOAVES ✦ 11–12 SLICES ✦ FROM ฿219 ✦ BRÖDBREAD MENU ✦ 850G LOAVES ✦ 11–12 SLICES ✦ FROM ฿219 ✦</span>
+    <span>BRÖDBREAD MENU ✦ 850G LOAVES ✦ 11–12 SLICES ✦ FROM ฿219 ✦ BRÖDBREAD MENU ✦ 850G LOAVES ✦ 11–12 SLICES ✦ FROM ฿219 ✦</span>
+  </div>
+  <div class="marquee-track marquee-mobile">
+    <span>BRÖDBREAD MENU ✦ 850G LOAVES ✦ FROM ฿219 ✦ BRÖDBREAD MENU ✦ 850G LOAVES ✦ FROM ฿219 ✦</span>
+    <span>BRÖDBREAD MENU ✦ 850G LOAVES ✦ FROM ฿219 ✦ BRÖDBREAD MENU ✦ 850G LOAVES ✦ FROM ฿219 ✦</span>
+  </div>
+</div>
+
+<main class="menu-wrap">
+
+  <div class="topline">
+    <a class="home-link" href="index.html" aria-label="Back to Brödbread home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+        <path d="M15 5 L8 12 L15 19"/>
+      </svg>
+      <span class="word">BRÖDBREAD</span>
+    </a>
+    <a class="order-top" href="https://www.instagram.com/brodbread.sourdough" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false">
+        <rect x="3.5" y="3.5" width="17" height="17" rx="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" stroke="none"/>
+      </svg>
+      <span>order via instagram</span>
+    </a>
+  </div>
+
+  <header class="menu-head">
+    <h1>this week&rsquo;s menu</h1>
+    <p class="thai-sub thai" lang="th">เมนูซาวร์โดว์ประจำสัปดาห์ — ยีสต์ธรรมชาติ 100%</p>
+    <p class="menu-note">every loaf: 850 g pre-baked · 11–12 slices · ทุกก้อน 850 กรัม หั่นได้ 11–12 แผ่น</p>
+  </header>
+
+  <ol class="menu-list">
+
+    <li class="menu-item reveal">
+      <button class="photo-btn" type="button" data-index="0" aria-label="View Original loaf full size">
+        <img src="assets/menu/1.webp" alt="Brödbread Original sourdough loaf" width="1080" height="1080" fetchpriority="high" decoding="async">
+        <span class="photo-hint" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#24201C" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 L21 21 M8.5 11 L13.5 11 M11 8.5 L11 13.5"/></svg>
+        </span>
+      </button>
+      <div class="item-info">
+        <span class="item-no">NO. 01</span>
+        <h2 class="item-title">Original</h2>
+        <p class="item-tagline">the one that started it all — unbleached bread flour, German rye &amp; wholemeal</p>
+        <p class="item-tagline-th" lang="th">รสคลาสสิก แป้งเบรดไม่ฟอกขาว ผสมรายและโฮลมีลเยอรมัน</p>
+        <span class="price-badge" aria-label="Price 219 baht">
+          <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path fill="#C7261B" d="M50 2 l6.5 9.2 10.4 -4 3.4 10.8 11.2 -0.6 -0.6 11.2 10.8 3.4 -4 10.4 9.2 6.5 -9.2 6.5 4 10.4 -10.8 3.4 0.6 11.2 -11.2 -0.6 -3.4 10.8 -10.4 -4 -6.5 9.2 -6.5 -9.2 -10.4 4 -3.4 -10.8 -11.2 0.6 0.6 -11.2 -10.8 -3.4 4 -10.4 -9.2 -6.5 9.2 -6.5 -4 -10.4 10.8 -3.4 -0.6 -11.2 11.2 0.6 3.4 -10.8 10.4 4 Z"/></svg>
+          <span class="price-num">฿219</span>
+        </span>
+      </div>
+    </li>
+
+    <hr class="item-sep">
+
+    <li class="menu-item reveal">
+      <button class="photo-btn" type="button" data-index="1" aria-label="View Cranberry Walnut loaf full size">
+        <img src="assets/menu/2.webp" alt="Brödbread Cranberry Walnut sourdough loaf with pumpkin seeds" width="1080" height="1080" loading="lazy" decoding="async">
+        <span class="photo-hint" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#24201C" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 L21 21 M8.5 11 L13.5 11 M11 8.5 L11 13.5"/></svg>
+        </span>
+      </button>
+      <div class="item-info">
+        <span class="item-no">NO. 02</span>
+        <h2 class="item-title">Cranberry Walnut</h2>
+        <p class="item-tagline">sweet-tart cranberries, toasted walnuts &amp; a crunch of pumpkin seeds</p>
+        <p class="item-tagline-th" lang="th">แครนเบอร์รี่เปรี้ยวหวาน วอลนัทคั่ว และเมล็ดฟักทองกรุบ ๆ</p>
+        <span class="price-badge" aria-label="Price 279 baht">
+          <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path fill="#C7261B" d="M50 2 l6.5 9.2 10.4 -4 3.4 10.8 11.2 -0.6 -0.6 11.2 10.8 3.4 -4 10.4 9.2 6.5 -9.2 6.5 4 10.4 -10.8 3.4 0.6 11.2 -11.2 -0.6 -3.4 10.8 -10.4 -4 -6.5 9.2 -6.5 -9.2 -10.4 4 -3.4 -10.8 -11.2 0.6 0.6 -11.2 -10.8 -3.4 4 -10.4 -9.2 -6.5 9.2 -6.5 -4 -10.4 10.8 -3.4 -0.6 -11.2 11.2 0.6 3.4 -10.8 10.4 4 Z"/></svg>
+          <span class="price-num">฿279</span>
+        </span>
+      </div>
+    </li>
+
+    <hr class="item-sep">
+
+    <li class="menu-item reveal">
+      <button class="photo-btn" type="button" data-index="2" aria-label="View Bacon Cheddar loaf full size">
+        <img src="assets/menu/3.webp" alt="Brödbread Bacon Cheddar sourdough loaf with mozzarella and herbs" width="1080" height="1080" loading="lazy" decoding="async">
+        <span class="photo-hint" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#24201C" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 L21 21 M8.5 11 L13.5 11 M11 8.5 L11 13.5"/></svg>
+        </span>
+      </button>
+      <div class="item-info">
+        <span class="item-no">NO. 03</span>
+        <h2 class="item-title">Bacon Cheddar</h2>
+        <p class="item-tagline">crispy bacon folded through cheddar, mozzarella &amp; herbs</p>
+        <p class="item-tagline-th" lang="th">เบคอนกรอบ เชดดาร์ มอสซาเรลลา และสมุนไพร เค็มมันกำลังดี</p>
+        <span class="price-badge" aria-label="Price 279 baht">
+          <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path fill="#C7261B" d="M50 2 l6.5 9.2 10.4 -4 3.4 10.8 11.2 -0.6 -0.6 11.2 10.8 3.4 -4 10.4 9.2 6.5 -9.2 6.5 4 10.4 -10.8 3.4 0.6 11.2 -11.2 -0.6 -3.4 10.8 -10.4 -4 -6.5 9.2 -6.5 -9.2 -10.4 4 -3.4 -10.8 -11.2 0.6 0.6 -11.2 -10.8 -3.4 4 -10.4 -9.2 -6.5 9.2 -6.5 -4 -10.4 10.8 -3.4 -0.6 -11.2 11.2 0.6 3.4 -10.8 10.4 4 Z"/></svg>
+          <span class="price-num">฿279</span>
+        </span>
+      </div>
+    </li>
+
+    <hr class="item-sep">
+
+    <li class="menu-item reveal">
+      <button class="photo-btn" type="button" data-index="3" aria-label="View 5 Seeds loaf full size">
+        <img src="assets/menu/4.webp" alt="Brödbread 5 Seeds sourdough loaf topped with mixed seeds" width="1080" height="1080" loading="lazy" decoding="async">
+        <span class="photo-hint" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#24201C" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 L21 21 M8.5 11 L13.5 11 M11 8.5 L11 13.5"/></svg>
+        </span>
+      </button>
+      <div class="item-info">
+        <span class="item-no">NO. 04</span>
+        <h2 class="item-title">5 Seeds</h2>
+        <p class="item-tagline">black sesame, chia, perilla, flax &amp; sunflower — seedy inside and out</p>
+        <p class="item-tagline-th" lang="th">งาดำ เมล็ดเจีย เพอริลลา แฟลกซ์ซีด และทานตะวัน เต็ม ๆ ทั้งก้อน</p>
+        <span class="price-badge" aria-label="Price 249 baht">
+          <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path fill="#C7261B" d="M50 2 l6.5 9.2 10.4 -4 3.4 10.8 11.2 -0.6 -0.6 11.2 10.8 3.4 -4 10.4 9.2 6.5 -9.2 6.5 4 10.4 -10.8 3.4 0.6 11.2 -11.2 -0.6 -3.4 10.8 -10.4 -4 -6.5 9.2 -6.5 -9.2 -10.4 4 -3.4 -10.8 -11.2 0.6 0.6 -11.2 -10.8 -3.4 4 -10.4 -9.2 -6.5 9.2 -6.5 -4 -10.4 10.8 -3.4 -0.6 -11.2 11.2 0.6 3.4 -10.8 10.4 4 Z"/></svg>
+          <span class="price-num">฿249</span>
+        </span>
+      </div>
+    </li>
+
+    <hr class="item-sep">
+
+    <li class="menu-item reveal">
+      <button class="photo-btn" type="button" data-index="4" aria-label="View Triple Choc loaf full size">
+        <img src="assets/menu/5.webp" alt="Brödbread Triple Choc sourdough loaf with dark and milk chocolate" width="1080" height="1080" loading="lazy" decoding="async">
+        <span class="photo-hint" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#24201C" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 L21 21 M8.5 11 L13.5 11 M11 8.5 L11 13.5"/></svg>
+        </span>
+      </button>
+      <div class="item-info">
+        <span class="item-no">NO. 05</span>
+        <h2 class="item-title">Triple Choc</h2>
+        <p class="item-tagline">cocoa dough, a touch of honey, dark &amp; milk chocolate chunks</p>
+        <p class="item-tagline-th" lang="th">แป้งโกโก้หอมน้ำผึ้ง สอดไส้ดาร์กและมิลค์ช็อกโกแลต</p>
+        <span class="price-badge" aria-label="Price 299 baht">
+          <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path fill="#C7261B" d="M50 2 l6.5 9.2 10.4 -4 3.4 10.8 11.2 -0.6 -0.6 11.2 10.8 3.4 -4 10.4 9.2 6.5 -9.2 6.5 4 10.4 -10.8 3.4 0.6 11.2 -11.2 -0.6 -3.4 10.8 -10.4 -4 -6.5 9.2 -6.5 -9.2 -10.4 4 -3.4 -10.8 -11.2 0.6 0.6 -11.2 -10.8 -3.4 4 -10.4 -9.2 -6.5 9.2 -6.5 -4 -10.4 10.8 -3.4 -0.6 -11.2 11.2 0.6 3.4 -10.8 10.4 4 Z"/></svg>
+          <span class="price-num">฿299</span>
+        </span>
+      </div>
+    </li>
+
+    <hr class="item-sep">
+
+    <li class="menu-item reveal">
+      <button class="photo-btn" type="button" data-index="5" aria-label="View Blueberry Lemon loaf full size">
+        <img src="assets/menu/6.webp" alt="Brödbread Blueberry Lemon sourdough loaf studded with blueberries" width="1080" height="1080" loading="lazy" decoding="async">
+        <span class="photo-hint" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#24201C" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 L21 21 M8.5 11 L13.5 11 M11 8.5 L11 13.5"/></svg>
+        </span>
+      </button>
+      <div class="item-info">
+        <span class="item-no">NO. 06</span>
+        <h2 class="item-title">Blueberry Lemon</h2>
+        <p class="item-tagline">juicy blueberries, lemon zest &amp; just a bit of sugar</p>
+        <p class="item-tagline-th" lang="th">บลูเบอร์รี่ฉ่ำ ๆ ผิวมะนาว หวานนิด ๆ สดชื่น</p>
+        <span class="price-badge" aria-label="Price 299 baht">
+          <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path fill="#C7261B" d="M50 2 l6.5 9.2 10.4 -4 3.4 10.8 11.2 -0.6 -0.6 11.2 10.8 3.4 -4 10.4 9.2 6.5 -9.2 6.5 4 10.4 -10.8 3.4 0.6 11.2 -11.2 -0.6 -3.4 10.8 -10.4 -4 -6.5 9.2 -6.5 -9.2 -10.4 4 -3.4 -10.8 -11.2 0.6 0.6 -11.2 -10.8 -3.4 4 -10.4 -9.2 -6.5 9.2 -6.5 -4 -10.4 10.8 -3.4 -0.6 -11.2 11.2 0.6 3.4 -10.8 10.4 4 Z"/></svg>
+          <span class="price-num">฿299</span>
+        </span>
+      </div>
+    </li>
+
+    <hr class="item-sep">
+
+    <li class="menu-item reveal">
+      <button class="photo-btn" type="button" data-index="6" aria-label="View Truffle Sharp Cheddar loaf full size">
+        <img src="assets/menu/7.webp" alt="Brödbread Truffle Sharp Cheddar sourdough loaf" width="1080" height="1080" loading="lazy" decoding="async">
+        <span class="photo-hint" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#24201C" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 L21 21 M8.5 11 L13.5 11 M11 8.5 L11 13.5"/></svg>
+        </span>
+      </button>
+      <div class="item-info">
+        <span class="item-no">NO. 07</span>
+        <h2 class="item-title">Truffle Sharp Cheddar</h2>
+        <p class="item-tagline">black truffle sauce swirled into sharp cheddar — the fancy one</p>
+        <p class="item-tagline-th" lang="th">ซอสทรัฟเฟิลดำผสมเชดดาร์รสเข้ม หอมฟุ้งตั้งแต่เปิดถุง</p>
+        <span class="price-badge" aria-label="Price 329 baht">
+          <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path fill="#C7261B" d="M50 2 l6.5 9.2 10.4 -4 3.4 10.8 11.2 -0.6 -0.6 11.2 10.8 3.4 -4 10.4 9.2 6.5 -9.2 6.5 4 10.4 -10.8 3.4 0.6 11.2 -11.2 -0.6 -3.4 10.8 -10.4 -4 -6.5 9.2 -6.5 -9.2 -10.4 4 -3.4 -10.8 -11.2 0.6 0.6 -11.2 -10.8 -3.4 4 -10.4 -9.2 -6.5 9.2 -6.5 -4 -10.4 10.8 -3.4 -0.6 -11.2 11.2 0.6 3.4 -10.8 10.4 4 Z"/></svg>
+          <span class="price-num">฿329</span>
+        </span>
+      </div>
+    </li>
+
+  </ol>
+
+</main>
+
+<!-- footer band -->
+<footer class="finale">
+  <span class="finale-taglines">
+    <p class="finale-title">Long ferment.<br class="finale-br"> Made to be shared.</p>
+    <span class="finale-th" lang="th">หมักนาน อบมาเพื่อแบ่งปัน</span>
+  </span>
+  <span class="copyright">© 2026 Brödbread · Bangkok</span>
+</footer>
+
+<!-- lightbox slideshow -->
+<div class="lightbox" id="lightbox" hidden>
+  <button class="lightbox-backdrop" type="button" data-close aria-label="Close"></button>
+  <figure class="lightbox-figure" role="dialog" aria-modal="true" aria-labelledby="lbCaption">
+    <img class="lightbox-img" id="lbImg" src="" alt="" width="1080" height="1080">
+    <figcaption class="lightbox-cap">
+      <span id="lbCaption"></span>
+      <span class="cap-price" id="lbPrice"></span>
+    </figcaption>
+    <span class="lightbox-count" id="lbCount"></span>
+  </figure>
+  <button class="lightbox-btn lightbox-prev" id="lbPrev" type="button" aria-label="Previous item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#24201C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 5 L8 12 L15 19"/></svg>
+  </button>
+  <button class="lightbox-btn lightbox-next" id="lbNext" type="button" aria-label="Next item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#24201C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 5 L16 12 L9 19"/></svg>
+  </button>
+  <button class="lightbox-btn lightbox-close" id="lbClose" type="button" aria-label="Close">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#24201C" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6 L18 18 M18 6 L6 18"/></svg>
+  </button>
+</div>
+
+<script>
+(function () {
+  /* ---- scroll reveal ---- */
+  var revealItems = document.querySelectorAll('.reveal');
+  function checkReveal() {
+    var h = window.innerHeight;
+    revealItems.forEach(function (el) {
+      if (el.getBoundingClientRect().top < h * 0.92) el.classList.add('shown');
+    });
+  }
+  window.addEventListener('scroll', checkReveal, { passive: true });
+  window.addEventListener('resize', checkReveal);
+  checkReveal();
+
+  /* ---- lightbox slideshow ---- */
+  var MENU = [
+    { src: 'assets/menu/1.webp', name: 'Original', price: '฿219' },
+    { src: 'assets/menu/2.webp', name: 'Cranberry Walnut', price: '฿279' },
+    { src: 'assets/menu/3.webp', name: 'Bacon Cheddar', price: '฿279' },
+    { src: 'assets/menu/4.webp', name: '5 Seeds', price: '฿249' },
+    { src: 'assets/menu/5.webp', name: 'Triple Choc', price: '฿299' },
+    { src: 'assets/menu/6.webp', name: 'Blueberry Lemon', price: '฿299' },
+    { src: 'assets/menu/7.webp', name: 'Truffle Sharp Cheddar', price: '฿329' }
+  ];
+
+  var lightbox = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lbImg');
+  var lbCaption = document.getElementById('lbCaption');
+  var lbPrice = document.getElementById('lbPrice');
+  var lbCount = document.getElementById('lbCount');
+  var lbPrev = document.getElementById('lbPrev');
+  var lbNext = document.getElementById('lbNext');
+  var lbClose = document.getElementById('lbClose');
+  var backdrop = lightbox.querySelector('.lightbox-backdrop');
+  var current = 0;
+  var lastFocus = null;
+
+  function render() {
+    var item = MENU[current];
+    lbImg.src = item.src;
+    lbImg.alt = 'Brödbread ' + item.name + ' sourdough loaf, full size';
+    lbCaption.textContent = item.name;
+    lbPrice.textContent = item.price;
+    lbCount.textContent = (current + 1) + ' / ' + MENU.length;
+    var next = MENU[(current + 1) % MENU.length];
+    var pre = new Image();
+    pre.src = next.src;
+  }
+
+  function openLb(index) {
+    lastFocus = document.activeElement;
+    current = index;
+    render();
+    lightbox.hidden = false;
+    document.body.style.overflow = 'hidden';
+    lbClose.focus();
+    document.addEventListener('keydown', onKeydown);
+    lightbox.addEventListener('touchstart', onTouchStart, { passive: true });
+    lightbox.addEventListener('touchend', onTouchEnd, { passive: true });
+  }
+
+  function closeLb() {
+    lightbox.hidden = true;
+    document.body.style.overflow = '';
+    document.removeEventListener('keydown', onKeydown);
+    lightbox.removeEventListener('touchstart', onTouchStart);
+    lightbox.removeEventListener('touchend', onTouchEnd);
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  function step(dir) {
+    current = (current + dir + MENU.length) % MENU.length;
+    render();
+  }
+
+  function onKeydown(e) {
+    if (e.key === 'Escape') closeLb();
+    else if (e.key === 'ArrowLeft') step(-1);
+    else if (e.key === 'ArrowRight') step(1);
+    else if (e.key === 'Tab') {
+      // simple focus trap: cycle the three controls
+      var ctrls = [lbClose, lbPrev, lbNext];
+      var i = ctrls.indexOf(document.activeElement);
+      e.preventDefault();
+      var nextIdx = e.shiftKey ? (i <= 0 ? ctrls.length - 1 : i - 1) : (i + 1) % ctrls.length;
+      ctrls[nextIdx].focus();
+    }
+  }
+
+  var touchX = null;
+  function onTouchStart(e) { touchX = e.changedTouches[0].clientX; }
+  function onTouchEnd(e) {
+    if (touchX === null) return;
+    var dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 48) step(dx < 0 ? 1 : -1);
+    touchX = null;
+  }
+
+  document.querySelectorAll('.photo-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      openLb(parseInt(btn.getAttribute('data-index'), 10));
+    });
+  });
+  lbPrev.addEventListener('click', function () { step(-1); });
+  lbNext.addEventListener('click', function () { step(1); });
+  lbClose.addEventListener('click', closeLb);
+  backdrop.addEventListener('click', closeLb);
+})();
+</script>
+
+</body>
+</html>

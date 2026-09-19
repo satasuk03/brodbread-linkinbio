@@ -9,4 +9,12 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+  <url>
+    <loc>https://brodbread.fromchuta.com/menu</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://brodbread.fromchuta.com/menu"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://brodbread.fromchuta.com/menu"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brodbread.fromchuta.com/menu"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>

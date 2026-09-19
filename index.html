@@ -312,6 +312,7 @@
     font-size: clamp(1.3125rem, 1.9vw, 1.6875rem); /* 21px -> 27px */
     line-height: 1.1;
     text-align: left;
+    text-decoration: none;
     cursor: pointer;
     box-shadow: 4px 4px 0 var(--shadow-cream);
     transition: transform .22s cubic-bezier(.6,0,.2,1), background .22s, color .22s, box-shadow .22s cubic-bezier(.6,0,.2,1);
@@ -341,20 +342,6 @@
   .pill:hover .btn-th { color: var(--rose); }
   .pill:hover .ico { stroke: var(--paper); }
   .pill:nth-of-type(even):hover { transform: rotate(1.2deg) translateY(-3px); }
-
-  /* ================= menu panel ================= */
-
-  .menu-panel {
-    padding: 18px 22px;
-    background: var(--soft-bg);
-    border: 3px dashed var(--accent);
-    border-radius: 20px;
-    transform: rotate(-.7deg);
-  }
-  .menu-panel[hidden] { display: none; }
-  .menu-title { margin: 0; font-size: 24px; line-height: 1.2; color: var(--accent); }
-  .menu-text { margin: 6px 0 0; font-size: 18px; line-height: 1.4; color: var(--body); }
-  .menu-th { margin: 7px 0 0; font-size: 13px; line-height: 1.7; color: var(--thai-dim); font-family: "Playpen Sans Thai", sans-serif; }
 
   /* ================= care ================= */
 
@@ -601,11 +588,6 @@
     .icon-btn:nth-of-type(even):hover { transform: rotate(3deg) translateY(-2px); }
     .icon-btn:active { box-shadow: 3px 3px 0 var(--shadow-cream); }
 
-    .menu-panel { padding: 16px 18px; border-width: 2.5px; border-radius: 18px; transform: rotate(-.8deg); }
-    .menu-title { font-size: 19px; line-height: 1.25; }
-    .menu-text { font-size: 15px; line-height: 1.4; }
-    .menu-th { font-size: 12px; line-height: 1.6; }
-
     .arrow-doodle { display: block; width: 54px; height: 36px; margin: 22px 0 6px; align-self: flex-start; }
 
     .care { width: 100%; margin-top: 2px; }
@@ -777,7 +759,7 @@
       </span>
     </button>
 
-    <button class="pill" id="menuToggle" type="button" aria-expanded="false" aria-controls="menuPanel">
+    <a class="pill" href="menu.html">
       <svg class="btn-icon ico" viewBox="0 0 24 24" fill="none" stroke="#FCF4E4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
         <path d="M4 5.5 C4 4.4 6.5 3.5 12 3.5 C17.5 3.5 20 4.4 20 5.5 L20 18.5 C20 19.6 17.5 20.5 12 20.5 C6.5 20.5 4 19.6 4 18.5 Z"/>
         <path d="M8 8.5 L16 8.5 M8 12 L16 12 M8 15.5 L13 15.5"/>
@@ -786,13 +768,7 @@
         <span>this week&rsquo;s menu</span>
         <span class="btn-th" lang="th">เมนูประจำสัปดาห์</span>
       </span>
-    </button>
-
-    <div class="menu-panel" id="menuPanel" hidden>
-      <p class="menu-title">menu drops soon!</p>
-      <p class="menu-text">this week&rsquo;s bake list isn&rsquo;t out yet — follow along on instagram for the drop.</p>
-      <p class="menu-th" lang="th">เมนูสัปดาห์นี้ยังไม่ออก ตามได้ที่อินสตาแกรม @brodbread.sourdough</p>
-    </div>
+    </a>
   </nav>
 
   <!-- curved arrow doodle (mobile) -->
@@ -912,7 +888,6 @@
   }
   bindToggle('storeBtn', 'storePanel');
   bindToggle('reheatBtn', 'reheatPanel');
-  bindToggle('menuToggle', 'menuPanel');
 
   /* ---- about modal ---- */
   var modal = document.getElementById('aboutModal');
