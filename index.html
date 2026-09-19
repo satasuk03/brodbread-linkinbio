@@ -385,6 +385,8 @@
   .acc-panel { padding: 0 4px 18px; }
   .acc-panel[hidden] { display: none; }
   .acc-panel p { margin: 0; font-size: 19px; line-height: 1.5; color: var(--body); }
+  .acc-panel ul { margin: 8px 0 0; padding-left: 26px; font-size: 19px; line-height: 1.5; color: var(--body); }
+  .acc-panel .acc-note { margin-top: 8px; }
   .acc-panel .thai-body { margin-top: 8px; font-size: 14px; line-height: 1.8; color: var(--thai-dim); font-family: "Playpen Sans Thai", sans-serif; }
 
   /* ================= natural yeast ================= */
@@ -602,6 +604,7 @@
     .sign { font-size: 24px; }
     .acc-panel { padding: 0 2px 15px; }
     .acc-panel p { font-size: 16px; line-height: 1.45; }
+    .acc-panel ul { font-size: 16px; line-height: 1.45; padding-left: 22px; }
     .acc-panel .thai-body { font-size: 12.5px; line-height: 1.75; }
 
     .yeast { width: 100%; margin-top: 22px; padding: 14px 18px; border-width: 2.5px; border-radius: 16px; gap: 12px; }
@@ -793,8 +796,8 @@
         <span class="sign" aria-hidden="true">+</span>
       </button>
       <div class="acc-panel" id="storePanel" hidden>
-        <p>Keep the loaf in a paper bag, cut side down, at room temperature for 2–3 days. Skip the fridge — it stales the crumb. To keep longer, slice and freeze for up to a month.</p>
-        <p class="thai-body" lang="th">เก็บในถุงกระดาษ คว่ำด้านที่ตัดลง วางที่อุณหภูมิห้องได้ 2–3 วัน ไม่ต้องแช่ตู้เย็นเพราะเนื้อขนมปังจะแห้งเร็ว ถ้าอยากเก็บนานกว่านั้น หั่นเป็นแผ่นแล้วแช่ช่องแข็งได้ถึง 1 เดือน</p>
+        <p>Pop it in the fridge as soon as it arrives — that keeps the sourdough fresh and tasty. It comes pre-sliced; keep the slices in a sealed bag or box: up to 3 days in the fridge, 1 month in the freezer.</p>
+        <p class="thai-body" lang="th">ควรเก็บเข้าตู้เย็นทันทีเมื่อได้รับ เพื่อรักษารสชาติและความสดใหม่ของซาวโดว์ — สไลด์เป็นแผ่น ใส่ในถุงหรือกล่องปิดสนิท เก็บในตู้เย็นได้ 3 วัน ช่องฟรีซได้ 1 เดือน</p>
       </div>
     </div>
 
@@ -807,8 +810,20 @@
         <span class="sign" aria-hidden="true">+</span>
       </button>
       <div class="acc-panel" id="reheatPanel" hidden>
-        <p>Whole loaf: spritz with water, bake at 180°C for 8–10 minutes (12–15 from frozen). Slices: straight into the toaster or a dry pan for a crackly crust.</p>
-        <p class="thai-body" lang="th">ทั้งก้อน: พรมน้ำเล็กน้อย อบที่ 180°C 8–10 นาที (ถ้าแช่แข็งมา 12–15 นาที) แบบหั่นแผ่น: ปิ้งในเครื่องปิ้งหรือกระทะแห้ง ผิวกรอบเนื้อในนุ่ม</p>
+        <p>Spritz the slices lightly with water — no need to thaw first:</p>
+        <ul>
+          <li>pan, medium heat — 3–5 min per side</li>
+          <li>air fryer 160–180°C — 3–5 min</li>
+          <li>toaster — 1–2 min</li>
+        </ul>
+        <p class="acc-note">Skip the microwave — it makes the bread tough and chewy.</p>
+        <p class="thai-body" lang="th">สเปรย์น้ำบาง ๆ ทั่วขนมปัง ไม่ต้องรอละลาย</p>
+        <ul class="thai-body" lang="th">
+          <li>จี่กระทะไฟกลาง ด้านละ 3–5 นาที</li>
+          <li>หม้ออบลมร้อน 160–180 องศา 3–5 นาที</li>
+          <li>เครื่องปิ้งขนมปัง 1–2 นาที</li>
+        </ul>
+        <p class="thai-body" lang="th">ไม่แนะนำให้ใช้ไมโครเวฟเพราะจะแข็งและเหนียว</p>
       </div>
     </div>
   </section>
