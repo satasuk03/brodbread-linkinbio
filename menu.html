@@ -337,14 +337,51 @@
     white-space: nowrap;
   }
 
+  /* ================= page transition ================= */
+
+  @view-transition { navigation: auto; }
+  ::view-transition-old(root), ::view-transition-new(root) { animation-duration: .32s; animation-timing-function: ease; }
+
+  /* ================= entrance ================= */
+
+  @keyframes enter { from { opacity: 0; translate: 0 22px; } }
+  @media (prefers-reduced-motion: no-preference) {
+    .enter { animation: enter .65s cubic-bezier(.2,.8,.3,1) backwards; animation-delay: var(--d, 0s); }
+  }
+
   /* ---- scroll reveal ---- */
 
-  .reveal { opacity: 0; transform: translateY(26px) rotate(.4deg); }
-  .reveal.shown {
-    opacity: 1;
-    transform: none;
-    transition: opacity .6s ease, transform .6s cubic-bezier(.2,.8,.3,1);
+  .reveal-init {
+    opacity: 0;
+    translate: 0 26px;
+    transition: opacity .6s ease, translate .6s cubic-bezier(.2,.8,.3,1);
   }
+  .reveal-init.shown { opacity: 1; translate: 0 0; }
+
+  /* ---- photo zoom + title underline ---- */
+
+  .photo-frame { display: block; overflow: hidden; border-radius: 7px; }
+  .photo-frame img { transition: transform .5s cubic-bezier(.2,.8,.3,1); }
+  .photo-btn:hover .photo-frame img, .photo-btn:focus-visible .photo-frame img { transform: scale(1.06); }
+
+  .item-title {
+    display: inline-block;
+    background: linear-gradient(var(--accent), var(--accent)) no-repeat left 96% / 0% 3px;
+    transition: background-size .4s cubic-bezier(.2,.8,.3,1);
+  }
+  .menu-item:hover .item-title { background-size: 100% 3px; }
+
+  /* ---- lightbox animation ---- */
+
+  .lightbox { opacity: 0; transition: opacity .28s ease; }
+  .lightbox-figure {
+    opacity: 0;
+    scale: .94;
+    translate: 0 12px;
+    transition: opacity .3s ease, scale .34s cubic-bezier(.2,.8,.3,1), translate .34s cubic-bezier(.2,.8,.3,1);
+  }
+  .lightbox.is-open { opacity: 1; }
+  .lightbox.is-open .lightbox-figure { opacity: 1; scale: 1; translate: 0 0; }
 
   /* ================= footer ================= */
 
@@ -435,8 +472,9 @@
 
   @media (prefers-reduced-motion: reduce) {
     .marquee-track { animation: none !important; }
-    .reveal { opacity: 1; transform: none; }
+    .reveal-init { opacity: 1 !important; translate: none !important; }
     *, *::before, *::after { transition: none !important; }
+    ::view-transition-old(root), ::view-transition-new(root) { animation: none !important; }
   }
 
   /* ================= mobile ================= */
@@ -517,7 +555,7 @@
 
 <main class="menu-wrap">
 
-  <div class="topline">
+  <div class="topline enter">
     <a class="home-link" href="index.html" aria-label="กลับไปหน้าแรกของ Brödbread">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
         <path d="M15 5 L8 12 L15 19"/>
@@ -534,7 +572,7 @@
     </a>
   </div>
 
-  <header class="menu-head">
+  <header class="menu-head enter" style="--d:.12s">
     <h1 class="thai">เมนูซาวร์โดว์ประจำสัปดาห์ — ยีสต์ธรรมชาติ 100%</h1>
     <p class="en-sub" lang="en">this week&rsquo;s menu</p>
     <p class="menu-note thai">ทุกก้อน 850 กรัมก่อนอบ · หั่นได้ 11–12 แผ่น · every loaf: 850 g pre-baked · 11–12 slices</p>
@@ -542,7 +580,7 @@
 
   <ol class="menu-list">
 
-    <li class="menu-item reveal">
+    <li class="menu-item" data-reveal>
       <button class="photo-btn" type="button" data-index="0" aria-label="ดูรูปซาวร์โดว์โอริจินัลขนาดเต็ม">
         <img src="assets/menu/1.webp" alt="ขนมปังซาวร์โดว์ Brödbread รสโอริจินัล" width="1080" height="1080" fetchpriority="high" decoding="async">
         <span class="photo-hint" aria-hidden="true">
@@ -563,7 +601,7 @@
 
     <hr class="item-sep">
 
-    <li class="menu-item reveal">
+    <li class="menu-item" data-reveal>
       <button class="photo-btn" type="button" data-index="1" aria-label="ดูรูปซาวร์โดว์แครนเบอร์รี่วอลนัทขนาดเต็ม">
         <img src="assets/menu/2.webp" alt="ขนมปังซาวร์โดว์ Brödbread รสแครนเบอร์รี่วอลนัท โรยเมล็ดฟักทอง" width="1080" height="1080" loading="lazy" decoding="async">
         <span class="photo-hint" aria-hidden="true">
@@ -584,7 +622,7 @@
 
     <hr class="item-sep">
 
-    <li class="menu-item reveal">
+    <li class="menu-item" data-reveal>
       <button class="photo-btn" type="button" data-index="2" aria-label="ดูรูปซาวร์โดว์เบคอนเชดดาร์ขนาดเต็ม">
         <img src="assets/menu/3.webp" alt="ขนมปังซาวร์โดว์ Brödbread รสเบคอนเชดดาร์ ไส้มอสซาเรลลาและสมุนไพร" width="1080" height="1080" loading="lazy" decoding="async">
         <span class="photo-hint" aria-hidden="true">
@@ -605,7 +643,7 @@
 
     <hr class="item-sep">
 
-    <li class="menu-item reveal">
+    <li class="menu-item" data-reveal>
       <button class="photo-btn" type="button" data-index="3" aria-label="ดูรูปซาวร์โดว์ 5 เมล็ดขนาดเต็ม">
         <img src="assets/menu/4.webp" alt="ขนมปังซาวร์โดว์ Brödbread รส 5 เมล็ด โรยเมล็ดธัญพืชรวม" width="1080" height="1080" loading="lazy" decoding="async">
         <span class="photo-hint" aria-hidden="true">
@@ -626,7 +664,7 @@
 
     <hr class="item-sep">
 
-    <li class="menu-item reveal">
+    <li class="menu-item" data-reveal>
       <button class="photo-btn" type="button" data-index="4" aria-label="ดูรูปซาวร์โดว์ทริปเปิ้ลช็อกขนาดเต็ม">
         <img src="assets/menu/5.webp" alt="ขนมปังซาวร์โดว์ Brödbread รสทริปเปิ้ลช็อก ไส้ดาร์กและมิลค์ช็อกโกแลต" width="1080" height="1080" loading="lazy" decoding="async">
         <span class="photo-hint" aria-hidden="true">
@@ -647,7 +685,7 @@
 
     <hr class="item-sep">
 
-    <li class="menu-item reveal">
+    <li class="menu-item" data-reveal>
       <button class="photo-btn" type="button" data-index="5" aria-label="ดูรูปซาวร์โดว์บลูเบอร์รี่เลม่อนขนาดเต็ม">
         <img src="assets/menu/6.webp" alt="ขนมปังซาวร์โดว์ Brödbread รสบลูเบอร์รี่เลม่อน ไส้บลูเบอร์รี่" width="1080" height="1080" loading="lazy" decoding="async">
         <span class="photo-hint" aria-hidden="true">
@@ -668,7 +706,7 @@
 
     <hr class="item-sep">
 
-    <li class="menu-item reveal">
+    <li class="menu-item" data-reveal>
       <button class="photo-btn" type="button" data-index="6" aria-label="ดูรูปซาวร์โดว์ทรัฟเฟิลเชดดาร์ขนาดเต็ม">
         <img src="assets/menu/7.webp" alt="ขนมปังซาวร์โดว์ Brödbread รสทรัฟเฟิลเชดดาร์" width="1080" height="1080" loading="lazy" decoding="async">
         <span class="photo-hint" aria-hidden="true">
@@ -692,10 +730,9 @@
 </main>
 
 <!-- footer band -->
-<footer class="finale">
+<footer class="finale" data-reveal>
   <span class="finale-taglines">
-    <p class="finale-title thai">หมักนาน<br class="finale-br">อบมาเพื่อแบ่งปัน</p>
-    <span class="finale-en" lang="en">Long ferment. Made to be shared.</span>
+    <p class="finale-title" lang="en">Long ferment.<br class="finale-br"> Made to be shared.</p>
   </span>
   <span class="copyright">© 2026 Brödbread · Bangkok</span>
 </footer>
@@ -724,17 +761,34 @@
 
 <script>
 (function () {
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   /* ---- scroll reveal ---- */
-  var revealItems = document.querySelectorAll('.reveal');
-  function checkReveal() {
-    var h = window.innerHeight;
-    revealItems.forEach(function (el) {
-      if (el.getBoundingClientRect().top < h * 0.92) el.classList.add('shown');
+  var revealEls = document.querySelectorAll('[data-reveal]');
+  if (!reduced && 'IntersectionObserver' in window) {
+    var ro = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var el = en.target;
+        el.classList.add('shown');
+        ro.unobserve(el);
+        // drop the override once finished so hover transitions behave normally
+        setTimeout(function () { el.classList.remove('reveal-init', 'shown'); }, 900);
+      });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    revealEls.forEach(function (el) {
+      el.classList.add('reveal-init');
+      ro.observe(el);
     });
   }
-  window.addEventListener('scroll', checkReveal, { passive: true });
-  window.addEventListener('resize', checkReveal);
-  checkReveal();
+
+  /* ---- photo zoom frames ---- */
+  document.querySelectorAll('.photo-btn > img').forEach(function (img) {
+    var frame = document.createElement('span');
+    frame.className = 'photo-frame';
+    img.parentNode.insertBefore(frame, img);
+    frame.appendChild(img);
+  });
 
   /* ---- lightbox slideshow ---- */
   var MENU = [
@@ -758,6 +812,7 @@
   var backdrop = lightbox.querySelector('.lightbox-backdrop');
   var current = 0;
   var lastFocus = null;
+  var closeTimer = null;
 
   function render() {
     var item = MENU[current];
@@ -775,21 +830,29 @@
     lastFocus = document.activeElement;
     current = index;
     render();
+    clearTimeout(closeTimer);
     lightbox.hidden = false;
     document.body.style.overflow = 'hidden';
     lbClose.focus();
     document.addEventListener('keydown', onKeydown);
     lightbox.addEventListener('touchstart', onTouchStart, { passive: true });
     lightbox.addEventListener('touchend', onTouchEnd, { passive: true });
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () { lightbox.classList.add('is-open'); });
+    });
   }
 
   function closeLb() {
-    lightbox.hidden = true;
+    lightbox.classList.remove('is-open');
     document.body.style.overflow = '';
     document.removeEventListener('keydown', onKeydown);
     lightbox.removeEventListener('touchstart', onTouchStart);
     lightbox.removeEventListener('touchend', onTouchEnd);
-    if (lastFocus && lastFocus.focus) lastFocus.focus();
+    clearTimeout(closeTimer);
+    closeTimer = setTimeout(function () {
+      lightbox.hidden = true;
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }, reduced ? 0 : 320);
   }
 
   function step(dir) {

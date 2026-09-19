@@ -381,9 +381,11 @@
   .acc-btn:hover { color: var(--accent); }
   .acc-titles { display: flex; align-items: baseline; gap: 12px; }
   .acc-titles .en-label { font-size: 13px; color: var(--thai-label); font-family: "Playpen Sans Thai", sans-serif; }
-  .sign { font-size: clamp(1.5rem, 2.1vw, 1.875rem); line-height: 1; color: var(--accent); }
-  .acc-panel { padding: 0 4px 18px; }
-  .acc-panel[hidden] { display: none; }
+  .sign { font-size: clamp(1.5rem, 2.1vw, 1.875rem); line-height: 1; color: var(--accent); display: inline-block; transition: transform .3s cubic-bezier(.6,0,.2,1); }
+  .acc-btn[aria-expanded="true"] .sign { transform: rotate(180deg); }
+  .acc-panel { display: grid; grid-template-rows: 1fr; transition: grid-template-rows .38s cubic-bezier(.6,0,.2,1), opacity .3s ease, visibility .38s; }
+  .acc-panel.is-collapsed { grid-template-rows: 0fr; opacity: 0; visibility: hidden; }
+  .acc-inner { overflow: hidden; min-height: 0; padding: 0 4px 18px; }
   .acc-panel p { margin: 0; font-size: 19px; line-height: 1.5; color: var(--body); }
   .acc-panel ul { margin: 8px 0 0; padding-left: 26px; font-size: 19px; line-height: 1.5; color: var(--body); }
   .acc-panel .acc-note { margin-top: 8px; }
@@ -501,12 +503,69 @@
     display: block;
   }
 
+  /* ================= page transition ================= */
+
+  @view-transition { navigation: auto; }
+  ::view-transition-old(root), ::view-transition-new(root) { animation-duration: .32s; animation-timing-function: ease; }
+
+  /* ================= entrance choreography ================= */
+
+  @keyframes enter { from { opacity: 0; translate: 0 22px; } }
+  @media (prefers-reduced-motion: no-preference) {
+    .enter { animation: enter .65s cubic-bezier(.2,.8,.3,1) backwards; animation-delay: var(--d, 0s); }
+  }
+
+  /* ================= scroll reveal ================= */
+
+  .reveal-init {
+    opacity: 0;
+    translate: 0 26px;
+    transition: opacity .6s ease, translate .6s cubic-bezier(.2,.8,.3,1);
+    transition-delay: var(--d, 0s);
+  }
+  .reveal-init.shown { opacity: 1; translate: 0 0; }
+
+  /* ================= doodle line-draw ================= */
+
+  .draw-init [data-draw] {
+    stroke-dasharray: var(--len);
+    stroke-dashoffset: var(--len);
+    transition: stroke-dashoffset .9s cubic-bezier(.4,0,.2,1);
+    transition-delay: var(--d, 0s);
+  }
+  .draw-init.drawn [data-draw] { stroke-dashoffset: 0; }
+  .draw-init .draw-fade { opacity: 0; transition: opacity .5s ease .55s; }
+  .draw-init.drawn .draw-fade { opacity: 1; }
+
+  /* ================= hero drift ================= */
+
+  @keyframes loaf-drift { to { translate: 0 26px; } }
+  @supports (animation-timeline: scroll()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .loaf { animation: loaf-drift linear both; animation-timeline: scroll(root); }
+    }
+  }
+
+  /* ================= modal / drawer animation ================= */
+
+  .modal { opacity: 0; transition: opacity .3s ease; }
+  .modal-dialog {
+    opacity: 0;
+    translate: 0 26px;
+    scale: .96;
+    transition: translate .38s cubic-bezier(.2,.8,.3,1), scale .38s cubic-bezier(.2,.8,.3,1), opacity .28s ease;
+  }
+  .modal.is-open { opacity: 1; }
+  .modal.is-open .modal-dialog { opacity: 1; translate: 0 0; scale: 1; }
+
   /* ================= reduced motion ================= */
 
   @media (prefers-reduced-motion: reduce) {
     .steam, .eye, .marquee-track { animation: none !important; }
     .steam { opacity: .7; }
     *, *::before, *::after { transition: none !important; }
+    .reveal-init { opacity: 1 !important; translate: none !important; }
+    ::view-transition-old(root), ::view-transition-new(root) { animation: none !important; }
   }
 
   /* ================= mobile ================= */
@@ -602,7 +661,7 @@
     .acc-titles { flex-direction: column; gap: 1px; }
     .acc-titles .en-label { font-size: 11.5px; }
     .sign { font-size: 24px; }
-    .acc-panel { padding: 0 2px 15px; }
+    .acc-inner { padding: 0 2px 15px; }
     .acc-panel p { font-size: 16px; line-height: 1.45; }
     .acc-panel ul { font-size: 16px; line-height: 1.45; padding-left: 22px; }
     .acc-panel .en-body { font-size: 12.5px; line-height: 1.75; }
@@ -638,6 +697,8 @@
       padding: 12px 22px 28px;
       box-shadow: none;
     }
+    .modal-dialog { translate: 0 100%; scale: 1; }
+    .modal.is-open .modal-dialog { translate: 0 0; }
     .modal-grip {
       display: block;
       width: 54px;
@@ -678,7 +739,7 @@
 
   <!-- identity -->
   <header class="identity">
-    <div class="hero">
+    <div class="hero enter">
       <svg class="steam-d" viewBox="0 0 150 68" aria-hidden="true" focusable="false">
         <path class="steam" d="M20 64 q8 -14 0 -26 q-8 -12 0 -24" fill="none" stroke="#6EA4D4" stroke-width="4" stroke-linecap="round"/>
         <path class="steam b" d="M74 66 q8 -14 0 -26 q-8 -12 0 -24" fill="none" stroke="#6EA4D4" stroke-width="4" stroke-linecap="round"/>
@@ -704,15 +765,15 @@
         <p class="thai">อบใหม่<br>ทุกสัปดาห์ →</p>
         <p class="en-note" lang="en">baked fresh every week</p>
       </div>
-      <svg class="hero-arrow" viewBox="0 0 120 70" aria-hidden="true" focusable="false">
-        <path d="M112 8 Q104 52 40 58" fill="none" stroke="#C7261B" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 9"/>
-        <path d="M52 48 L38 58 L52 66" fill="none" stroke="#C7261B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <svg class="hero-arrow" viewBox="0 0 120 70" aria-hidden="true" focusable="false" data-draw-svg>
+        <path class="draw-fade" d="M112 8 Q104 52 40 58" fill="none" stroke="#C7261B" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 9"/>
+        <path data-draw style="--d:.45s" d="M52 48 L38 58 L52 66" fill="none" stroke="#C7261B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
 
-    <h1 class="wordmark">BR<span class="o">Ö<i class="eye eye--l"></i><i class="eye eye--r"></i></span>D<br class="desktop-br">BREAD</h1>
+    <h1 class="wordmark enter" style="--d:.1s">BR<span class="o">Ö<i class="eye eye--l"></i><i class="eye eye--r"></i></span>D<br class="desktop-br">BREAD</h1>
 
-    <div class="subline">
+    <div class="subline enter" style="--d:.2s">
       <p class="thai">Sourdough</p>
       <svg class="wheat" viewBox="0 0 40 46" aria-hidden="true" focusable="false">
         <path d="M20 44 L20 10" fill="none" stroke="#C7261B" stroke-width="2.6" stroke-linecap="round"/>
@@ -720,17 +781,17 @@
       </svg>
     </div>
 
-    <p class="tagline thai">ซาวร์โดว์หมักช้า <span class="accent" lang="en">homemade</span></p>
-    <p class="tagline-en" lang="en">slow-fermented sourdough, baked at home.</p>
+    <p class="tagline thai enter" style="--d:.3s">ซาวร์โดว์หมักช้า <span class="accent" lang="en">homemade</span></p>
+    <p class="tagline-en enter" lang="en" style="--d:.38s">slow-fermented sourdough, baked at home.</p>
 
-    <svg class="squiggle" viewBox="0 0 140 14" aria-hidden="true" focusable="false">
-      <path d="M3 8 Q14 1 25 8 T47 8 T69 8 T91 8 T113 8 T137 8" fill="none" stroke="#6EA4D4" stroke-width="3" stroke-linecap="round"/>
+    <svg class="squiggle" viewBox="0 0 140 14" aria-hidden="true" focusable="false" data-draw-svg>
+      <path data-draw d="M3 8 Q14 1 25 8 T47 8 T69 8 T91 8 T113 8 T137 8" fill="none" stroke="#6EA4D4" stroke-width="3" stroke-linecap="round"/>
     </svg>
   </header>
 
   <!-- links -->
   <nav class="links" aria-label="ลิงก์ Brödbread">
-    <div class="icon-row">
+    <div class="icon-row" data-reveal>
       <a class="icon-btn" href="https://www.facebook.com/brodbread" target="_blank" rel="noopener" aria-label="Brödbread บน Facebook">
         <svg class="ico-fill" viewBox="0 0 24 24" fill="#24201C" aria-hidden="true" focusable="false">
           <path d="M13.5 21v-7h2.4l.4-3h-2.8V9.1c0-.9.3-1.5 1.6-1.5h1.3V4.9c-.3 0-1.1-.1-2.1-.1-2.1 0-3.6 1.3-3.6 3.7V11H8.3v3h2.4v7h2.8z"/>
@@ -750,7 +811,7 @@
       </a>
     </div>
 
-    <button class="soft-btn" id="aboutOpen" type="button" aria-haspopup="dialog">
+    <button class="soft-btn" id="aboutOpen" type="button" aria-haspopup="dialog" data-reveal style="--d:.08s">
       <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="#24201C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
         <circle cx="12" cy="12" r="9"/>
         <path d="M9.3 9.1 a2.8 2.8 0 0 1 5.4 .9 c0 1.9 -2.7 2.3 -2.7 4"/>
@@ -762,7 +823,7 @@
       </span>
     </button>
 
-    <a class="pill" href="menu.html">
+    <a class="pill" href="menu.html" data-reveal style="--d:.16s">
       <svg class="btn-icon ico" viewBox="0 0 24 24" fill="none" stroke="#FCF4E4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
         <path d="M4 5.5 C4 4.4 6.5 3.5 12 3.5 C17.5 3.5 20 4.4 20 5.5 L20 18.5 C20 19.6 17.5 20.5 12 20.5 C6.5 20.5 4 19.6 4 18.5 Z"/>
         <path d="M8 8.5 L16 8.5 M8 12 L16 12 M8 15.5 L13 15.5"/>
@@ -775,61 +836,65 @@
   </nav>
 
   <!-- curved arrow doodle (mobile) -->
-  <svg class="arrow-doodle" viewBox="0 0 60 40" aria-hidden="true" focusable="false">
-    <path d="M6 4 Q30 6 34 26" fill="none" stroke="#C7261B" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="1 7"/>
-    <path d="M27 20 L34 28 L41 21" fill="none" stroke="#C7261B" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <svg class="arrow-doodle" viewBox="0 0 60 40" aria-hidden="true" focusable="false" data-draw-svg>
+    <path class="draw-fade" d="M6 4 Q30 6 34 26" fill="none" stroke="#C7261B" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="1 7"/>
+    <path data-draw d="M27 20 L34 28 L41 21" fill="none" stroke="#C7261B" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
   </svg>
 
   <!-- care -->
-  <section class="care" aria-label="วิธีดูแลขนมปัง">
+  <section class="care" aria-label="วิธีดูแลขนมปัง" data-reveal>
     <div class="care-head">
       <h2 class="thai">วิธีดูแลขนมปัง</h2>
       <span class="en-label" lang="en">sourdough care</span>
     </div>
 
     <div class="acc">
-      <button class="acc-btn" id="storeBtn" type="button" aria-expanded="false" aria-controls="storePanel">
+      <button class="acc-btn" id="storeBtn" type="button" aria-expanded="true" aria-controls="storePanel">
         <span class="acc-titles">
           <span class="thai">วิธีเก็บรักษา</span>
           <span class="en-label" lang="en">how to store</span>
         </span>
-        <span class="sign" aria-hidden="true">+</span>
+        <span class="sign" aria-hidden="true">–</span>
       </button>
-      <div class="acc-panel" id="storePanel" hidden>
-        <p class="thai">ควรเก็บเข้าตู้เย็นทันทีเมื่อได้รับ เพื่อรักษารสชาติและความสดใหม่ของซาวร์โดว์ — สไลด์เป็นแผ่น ใส่ในถุงหรือกล่องปิดสนิท เก็บในตู้เย็นได้ 3 วัน ช่องฟรีซได้ 1 เดือน</p>
-        <p class="en-body" lang="en">Pop it in the fridge as soon as it arrives — that keeps the sourdough fresh and tasty. It comes pre-sliced; keep the slices in a sealed bag or box: up to 3 days in the fridge, 1 month in the freezer.</p>
+      <div class="acc-panel" id="storePanel">
+        <div class="acc-inner">
+          <p class="thai">ควรเก็บเข้าตู้เย็นทันทีเมื่อได้รับ เพื่อรักษารสชาติและความสดใหม่ของซาวร์โดว์ — สไลด์เป็นแผ่น ใส่ในถุงหรือกล่องปิดสนิท เก็บในตู้เย็นได้ 3 วัน ช่องฟรีซได้ 1 เดือน</p>
+          <p class="en-body" lang="en">Pop it in the fridge as soon as it arrives — that keeps the sourdough fresh and tasty. It comes pre-sliced; keep the slices in a sealed bag or box: up to 3 days in the fridge, 1 month in the freezer.</p>
+        </div>
       </div>
     </div>
 
     <div class="acc">
-      <button class="acc-btn" id="reheatBtn" type="button" aria-expanded="false" aria-controls="reheatPanel">
+      <button class="acc-btn" id="reheatBtn" type="button" aria-expanded="true" aria-controls="reheatPanel">
         <span class="acc-titles">
           <span class="thai">วิธีอุ่นให้อร่อย</span>
           <span class="en-label" lang="en">how to reheat</span>
         </span>
-        <span class="sign" aria-hidden="true">+</span>
+        <span class="sign" aria-hidden="true">–</span>
       </button>
-      <div class="acc-panel" id="reheatPanel" hidden>
-        <p class="thai">สเปรย์น้ำบาง ๆ ทั่วขนมปัง ไม่ต้องรอละลาย</p>
-        <ul class="thai">
-          <li>จี่กระทะไฟกลาง ด้านละ 3–5 นาที</li>
-          <li>หม้ออบลมร้อน 160–180 องศา 3–5 นาที</li>
-          <li>เครื่องปิ้งขนมปัง 1–2 นาที</li>
-        </ul>
-        <p class="acc-note thai">ไม่แนะนำให้ใช้ไมโครเวฟเพราะจะแข็งและเหนียว</p>
-        <p class="en-body" lang="en">Spritz the slices lightly with water — no need to thaw first:</p>
-        <ul class="en-body" lang="en">
-          <li>pan, medium heat — 3–5 min per side</li>
-          <li>air fryer 160–180°C — 3–5 min</li>
-          <li>toaster — 1–2 min</li>
-        </ul>
-        <p class="en-body" lang="en">Skip the microwave — it makes the bread tough and chewy.</p>
+      <div class="acc-panel" id="reheatPanel">
+        <div class="acc-inner">
+          <p class="thai">สเปรย์น้ำบาง ๆ ทั่วขนมปัง ไม่ต้องรอละลาย</p>
+          <ul class="thai">
+            <li>จี่กระทะไฟกลาง ด้านละ 3–5 นาที</li>
+            <li>หม้ออบลมร้อน 160–180 องศา 3–5 นาที</li>
+            <li>เครื่องปิ้งขนมปัง 1–2 นาที</li>
+          </ul>
+          <p class="acc-note thai">ไม่แนะนำให้ใช้ไมโครเวฟเพราะจะแข็งและเหนียว</p>
+          <p class="en-body" lang="en">Spritz the slices lightly with water — no need to thaw first:</p>
+          <ul class="en-body" lang="en">
+            <li>pan, medium heat — 3–5 min per side</li>
+            <li>air fryer 160–180°C — 3–5 min</li>
+            <li>toaster — 1–2 min</li>
+          </ul>
+          <p class="en-body" lang="en">Skip the microwave — it makes the bread tough and chewy.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- natural yeast block -->
-  <div class="yeast">
+  <div class="yeast" data-reveal>
     <span class="yeast-labels">
       <span class="yeast-title thai">ยีสต์ธรรมชาติ 100%</span>
       <span class="yeast-en" lang="en">natural yeast 100%</span>
@@ -845,7 +910,7 @@
 </main>
 
 <!-- footer band -->
-<footer class="finale">
+<footer class="finale" data-reveal>
   <span class="finale-taglines">
     <p class="finale-title" lang="en">Long ferment.<br class="finale-br"> Made to be shared.</p>
   </span>
@@ -888,20 +953,70 @@
 
 <script>
 (function () {
-  /* ---- accordions + menu panel ---- */
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- accordions ---- */
   function bindToggle(btnId, panelId) {
     var btn = document.getElementById(btnId);
     var panel = document.getElementById(panelId);
+    var sign = btn.querySelector('.sign');
+    // panels ship open in the markup (no-JS fallback); collapse them here
+    panel.classList.add('is-collapsed');
+    btn.setAttribute('aria-expanded', 'false');
+    if (sign) sign.textContent = '+';
     btn.addEventListener('click', function () {
       var open = btn.getAttribute('aria-expanded') === 'true';
       btn.setAttribute('aria-expanded', String(!open));
-      panel.hidden = open;
-      var sign = btn.querySelector('.sign');
+      panel.classList.toggle('is-collapsed', open);
       if (sign) sign.textContent = open ? '+' : '–';
     });
   }
   bindToggle('storeBtn', 'storePanel');
   bindToggle('reheatBtn', 'reheatPanel');
+
+  /* ---- scroll reveal ---- */
+  var revealEls = document.querySelectorAll('[data-reveal]');
+  if (!reduced && 'IntersectionObserver' in window) {
+    var ro = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var el = en.target;
+        el.classList.add('shown');
+        ro.unobserve(el);
+        // drop the override once finished so the element's own hover transitions come back
+        setTimeout(function () { el.classList.remove('reveal-init', 'shown'); }, 1100);
+      });
+    }, { rootMargin: '0px 0px -6% 0px' });
+    revealEls.forEach(function (el) {
+      el.classList.add('reveal-init');
+      ro.observe(el);
+    });
+  }
+
+  /* ---- doodle line-draw ---- */
+  if (!reduced) {
+    var drawSvgs = document.querySelectorAll('[data-draw-svg]');
+    drawSvgs.forEach(function (svg) {
+      var ok = false;
+      svg.querySelectorAll('[data-draw]').forEach(function (p) {
+        try {
+          var len = p.getTotalLength();
+          if (len > 0) { p.style.setProperty('--len', len.toFixed(1)); ok = true; }
+        } catch (e) { /* hidden svg — leave path as-is */ }
+      });
+      if (ok) svg.classList.add('draw-init');
+    });
+    if ('IntersectionObserver' in window) {
+      var drawObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { en.target.classList.add('drawn'); drawObs.unobserve(en.target); }
+        });
+      }, { threshold: .35 });
+      drawSvgs.forEach(function (svg) { drawObs.observe(svg); });
+    } else {
+      drawSvgs.forEach(function (svg) { svg.classList.add('drawn'); });
+    }
+  }
 
   /* ---- about modal ---- */
   var modal = document.getElementById('aboutModal');
@@ -909,20 +1024,29 @@
   var closeBtn = document.getElementById('aboutClose');
   var backdrop = modal.querySelector('.modal-backdrop');
   var lastFocus = null;
+  var closeTimer = null;
 
   function openModal() {
     lastFocus = document.activeElement;
+    clearTimeout(closeTimer);
     modal.hidden = false;
     document.body.style.overflow = 'hidden';
     closeBtn.focus();
     document.addEventListener('keydown', onKeydown);
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () { modal.classList.add('is-open'); });
+    });
   }
 
   function closeModal() {
-    modal.hidden = true;
+    modal.classList.remove('is-open');
     document.body.style.overflow = '';
     document.removeEventListener('keydown', onKeydown);
-    if (lastFocus && lastFocus.focus) lastFocus.focus();
+    clearTimeout(closeTimer);
+    closeTimer = setTimeout(function () {
+      modal.hidden = true;
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }, reduced ? 0 : 380);
   }
 
   function onKeydown(e) {
