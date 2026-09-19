@@ -3,20 +3,55 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BRÖDBREAD — homemade sourdough, baked in Thailand</title>
-<meta name="description" content="Slow-fermented homemade sourdough, baked at home in Thailand. Long ferment — made to be shared.">
+<title>BRÖDBREAD — ซาวร์โดว์โฮมเมด ยีสต์ธรรมชาติ 100% | Sourdough Bangkok</title>
+<meta name="description" content="ซาวร์โดว์โฮมเมดหมักช้า ยีสต์ธรรมชาติ 100% อบเองที่บ้านในกรุงเทพฯ — Slow-fermented homemade sourdough, baked at home in Bangkok, Thailand. Long ferment — made to be shared.">
+<meta name="keywords" content="ซาวร์โดว์, sourdough, ขนมปังซาวร์โดว์, sourdough Bangkok, ขนมปังโฮมเมด, natural yeast, ยีสต์ธรรมชาติ, homemade bread Thailand">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://brodbread-linkinbio.pages.dev/">
+<link rel="canonical" href="https://brodbread.fromchuta.com/">
+<link rel="alternate" hreflang="en" href="https://brodbread.fromchuta.com/">
+<link rel="alternate" hreflang="th" href="https://brodbread.fromchuta.com/">
+<link rel="alternate" hreflang="x-default" href="https://brodbread.fromchuta.com/">
 <meta name="theme-color" content="#FCF4E4">
+<meta name="geo.region" content="TH-10">
+<meta name="geo.placename" content="Bangkok">
+<meta property="og:locale" content="th_TH">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:site_name" content="BRÖDBREAD">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://brodbread-linkinbio.pages.dev/">
-<meta property="og:title" content="BRÖDBREAD — homemade sourdough, baked in Thailand">
-<meta property="og:description" content="Slow-fermented homemade sourdough, baked at home in Thailand. Long ferment — made to be shared.">
-<meta property="og:image" content="https://brodbread-linkinbio.pages.dev/bread.png">
+<meta property="og:url" content="https://brodbread.fromchuta.com/">
+<meta property="og:title" content="BRÖDBREAD — homemade sourdough, 100% Natural Yeast">
+<meta property="og:description" content="Slow-fermented homemade sourdough, baked at home. Long ferment — made to be shared.">
+<meta property="og:image" content="https://brodbread.fromchuta.com/bread.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="BRÖDBREAD — homemade sourdough, baked in Thailand">
-<meta name="twitter:description" content="Slow-fermented homemade sourdough, baked at home in Thailand. Long ferment — made to be shared.">
-<meta name="twitter:image" content="https://brodbread-linkinbio.pages.dev/bread.png">
+<meta name="twitter:title" content="BRÖDBREAD — homemade sourdough, 100% Natural Yeast">
+<meta name="twitter:description" content="Slow-fermented homemade sourdough, baked at home. Long ferment — made to be shared.">
+<meta name="twitter:image" content="https://brodbread.fromchuta.com/bread.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Bakery",
+  "name": "BRÖDBREAD",
+  "description": "ซาวร์โดว์โฮมเมดหมักช้า ยีสต์ธรรมชาติ 100% อบเองที่บ้านในกรุงเทพฯ — Slow-fermented homemade sourdough, 100% natural yeast, baked at home in Bangkok, Thailand.",
+  "url": "https://brodbread.fromchuta.com/",
+  "image": "https://brodbread.fromchuta.com/bread.png",
+  "servesCuisine": "Sourdough Bread",
+  "priceRange": "฿฿",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Bangkok",
+    "addressCountry": "TH"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Thailand"
+  },
+  "sameAs": [
+    "https://www.facebook.com/brodbread",
+    "https://www.instagram.com/brodbread.sourdough"
+  ]
+}
+</script>
+<link rel="preload" as="image" href="bread.webp" type="image/webp">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -467,16 +502,14 @@
   .modal-img {
     margin-top: 22px;
     height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2.5px dashed var(--dash);
     border-radius: 18px;
-    color: var(--placeholder);
-    font-size: 16px;
-    text-align: center;
-    padding: 0 16px;
-    font-family: "Playpen Sans Thai", sans-serif;
+    overflow: hidden;
+  }
+  .modal-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 
   /* ================= reduced motion ================= */
@@ -647,8 +680,8 @@
 <!-- red marquee strip -->
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track marquee-desktop">
-    <span>BRÖDBREAD SOURDOUGH ✦ LONG FERMENT ✦ MADE TO BE SHARED ✦ BAKED AT HOME IN BANGKOK ✦ BRÖDBREAD SOURDOUGH ✦ LONG FERMENT ✦ MADE TO BE SHARED ✦ BAKED AT HOME IN BANGKOK ✦</span>
-    <span>BRÖDBREAD SOURDOUGH ✦ LONG FERMENT ✦ MADE TO BE SHARED ✦ BAKED AT HOME IN BANGKOK ✦ BRÖDBREAD SOURDOUGH ✦ LONG FERMENT ✦ MADE TO BE SHARED ✦ BAKED AT HOME IN BANGKOK ✦</span>
+    <span>BRÖDBREAD SOURDOUGH ✦ LONG FERMENT ✦ MADE TO BE SHARED ✦ BAKED AT HOME ✦ BRÖDBREAD SOURDOUGH ✦ LONG FERMENT ✦ MADE TO BE SHARED ✦ BAKED AT HOME ✦</span>
+    <span>BRÖDBREAD SOURDOUGH ✦ LONG FERMENT ✦ MADE TO BE SHARED ✦ BAKED AT HOME ✦ BRÖDBREAD SOURDOUGH ✦ LONG FERMENT ✦ MADE TO BE SHARED ✦ BAKED AT HOME ✦</span>
   </div>
   <div class="marquee-track marquee-mobile">
     <span>BRÖDBREAD SOURDOUGH ✦ LONG FERMENT ✦ MADE TO BE SHARED ✦ BRÖDBREAD SOURDOUGH ✦ LONG FERMENT ✦ MADE TO BE SHARED ✦</span>
@@ -673,7 +706,7 @@
       </svg>
       <picture>
         <source srcset="bread.webp" type="image/webp">
-        <img class="loaf" src="bread.png" alt="A round loaf of Brödbread sourdough with a curved ear along the top" width="730" height="643">
+        <img class="loaf" src="bread.png" alt="A round loaf of Brödbread sourdough with a curved ear along the top" width="730" height="643" fetchpriority="high" decoding="async">
       </picture>
       <svg class="wheat-m" viewBox="0 0 40 46" aria-hidden="true" focusable="false">
         <path d="M20 44 L20 10" fill="none" stroke="#C7261B" stroke-width="2.6" stroke-linecap="round"/>
@@ -702,7 +735,7 @@
       </svg>
     </div>
 
-    <p class="tagline">slow-fermented sourdough, <span class="accent">baked at home</span> in Thailand.</p>
+    <p class="tagline">slow-fermented sourdough, <span class="accent">baked at home</span>.</p>
     <p class="tagline-th thai" lang="th">ซาวร์โดว์หมักช้า อบเองที่บ้าน ในประเทศไทย</p>
 
     <svg class="squiggle" viewBox="0 0 140 14" aria-hidden="true" focusable="false">
@@ -855,7 +888,9 @@
         <p class="thai-body" lang="th">สิ่งที่ได้: เปรี้ยวนิด ๆ เนื้อเหนียวรูโปร่ง เปลือกกรอบ และเพราะหมักนาน หลายคนจึงย่อยง่ายกว่า เก็บได้หลายวันโดยไม่ต้องใส่สารกันเสีย</p>
       </div>
       <div class="modal-img-col">
-        <div class="modal-img">[ IMAGE — starter jar, or a crumb shot ]</div>
+        <div class="modal-img">
+          <img src="minimal.webp" alt="A freshly baked Brödbread sourdough loaf with a crackling crust and open crumb" width="1080" height="1350" loading="lazy" decoding="async">
+        </div>
       </div>
     </div>
   </section>
