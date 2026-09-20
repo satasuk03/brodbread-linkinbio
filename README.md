@@ -29,6 +29,6 @@ and serves as the `<img>` fallback for `bread.webp`.
 
 The design ships with placeholders to fill in before going live:
 
-- Phone number: the call button is `tel:+66000000000`
+- Phone number: the call button is `tel:+660640024350`
 - Ferment time: the about modal says `[YOUR FERMENT TIME]`
 - Image slot: the about modal has a `[ IMAGE — starter jar, or a crumb shot ]` placeholder
